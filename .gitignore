@@ -363,3 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 /DemoMediatR/demoMediatrDb.db
 /DemoMediatR/Migrations
+/DemoMediatR/demoMediatrDb.db-shm
+/DemoMediatR/demoMediatrDb.db-wal

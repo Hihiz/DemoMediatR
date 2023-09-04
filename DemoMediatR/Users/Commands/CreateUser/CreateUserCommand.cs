@@ -1,8 +1,10 @@
-﻿namespace DemoMediatR.Models
+﻿using DemoMediatR.Models;
+using MediatR;
+
+namespace DemoMediatR.Users.Commands.CreateUser
 {
-    public class User
+    public class CreateUserCommand : IRequest<User>
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
 
