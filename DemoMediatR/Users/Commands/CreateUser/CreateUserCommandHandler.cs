@@ -2,16 +2,15 @@
 using DemoMediatR.Interfaces;
 using DemoMediatR.Models;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace DemoMediatR.Users.Commands.CreateUser
 {
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, User>
     {
         private readonly IRepository<User> _repository;
+        private readonly ApplicationDbContext _db;
 
-        public CreateUserCommandHandler(IRepository<User> repository) => (_repository) = (repository);
+        public CreateUserCommandHandler(IRepository<User> repository, ApplicationDbContext db) => (_repository, _db) = (repository, db);
 
         public async Task<User> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
@@ -22,11 +21,7 @@ namespace DemoMediatR.Users.Commands.CreateUser
                 RoleId = request.RoleId,
             };
 
-
             _repository.Create(user);
-
-          
-
             _repository.SaveChangesAsync();
 
             return user;
